@@ -1,7 +1,7 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import './App.css'
 import Root from './layout/Root'
-import { Home } from './pages'
+import { Home, Login, SignUp } from './pages'
 
 function App() {
 
@@ -11,6 +11,10 @@ function App() {
         <Route path='/' element={<Root />}>
           <Route index element={<Home />} />
 
+        </Route>
+        <Route path='/auth'>
+          <Route path='login' element={<Login />} />
+          <Route path='get-started' element={<SignUp />} />
         </Route>
       </Route>
     )
