@@ -11,7 +11,9 @@ import pinterestLogo from "../assets/Pinterest - png.svg";
 import stripeLogo from "../assets/Stripe svg.svg";
 import adobeLogo from "../assets/Adobe - png 0.svg";
 import airbnbLogo from "../assets/Airbnb - png 0.svg";
-import manWorkingOutImg from '../assets/Office worker exercising with dumbbells to train muscles while he uses laptop at desk. employee lifting weights and doing physical activity with fitness exercise, working on computer for business..png'
+import manWorkingOutImg from "../assets/Office worker exercising with dumbbells to train muscles while he uses laptop at desk. employee lifting weights and doing physical activity with fitness exercise, working on computer for business..png";
+import ladyWithLaptopImg from '../assets/Lady working on her computer.png'
+import manSmilingImg from '../assets/Man smiling and holding coffee.png'
 
 const Home = () => {
   return (
@@ -105,22 +107,82 @@ const Home = () => {
       </section>
       <section>
         <div className="w-3/4 mx-auto">
-          <div className="grid grid-cols-2">
-            <div>
-              <h3>Track personal and organizational goals</h3>
-              <p>
-                Our performance management system allows you to align individual
-                goals with organizational goals, ensuring that everyone in your
-                organization is working towards the same objectives. You can
-                easily monitor progress toward goals at both the individual and
-                team levels, giving you a comprehensive view of performance
-                across your organization.
-              </p>
+          <div className="grid grid-cols-2 gap-7 mb-56">
+            <div className="flex flex-col justify-between">
+              <div className="flex flex-col gap-5">
+                <h3 className="text-primary-text-900 font-bold text-4xl">
+                  Track personal and organizational goals
+                </h3>
+                <p className="text-[#686868] font-medium text-sm">
+                  Our performance management system allows you to align
+                  individual goals with organizational goals, ensuring that
+                  everyone in your organization is working towards the same
+                  objectives. You can easily monitor progress toward goals at
+                  both the individual and team levels, giving you a
+                  comprehensive view of performance across your organization.
+                </p>
+              </div>
+              <Link
+                to={"/"}
+                className="w-fit py-4 px-6 rounded-md font-medium bg-secondary-color text-primary-color"
+              >
+                Request a demo
+              </Link>
             </div>
-            <div></div>
+            <div>
+              <img src={manWorkingOutImg} alt="" />
+            </div>
           </div>
-          <div></div>
-          <div></div>
+          <div className="grid grid-cols-2 gap-7 mb-56">
+            <div>
+              <img src={ladyWithLaptopImg} alt="" />
+            </div>
+            <div className="flex flex-col justify-between px-7">
+              <div className="flex flex-col gap-5">
+                <h3 className="text-primary-text-900 font-bold text-4xl">
+                  Monitor employee progress towards goals
+                </h3>
+                <p className="text-[#686868] font-medium text-sm">
+                  By tracking progress toward goals, you can recognize and
+                  reward employees who are performing at a high level, boosting
+                  employee morale and increasing retention. With our performance
+                  management system, you can achieve better business outcomes
+                  and build a high-performing workforce.
+                </p>
+              </div>
+              <Link
+                to={"/"}
+                className="w-fit py-4 px-6 rounded-md font-medium bg-secondary-color text-primary-color"
+              >
+                Request a demo
+              </Link>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-7">
+            <div className="flex flex-col justify-between">
+              <div className="flex flex-col gap-5">
+                <h3 className="text-primary-text-900 font-bold text-4xl">
+                  Integrate with HR systems such as payroll
+                </h3>
+                <p className="text-[#686868] font-medium text-sm">
+                  With our performance management system, you can integrate
+                  seamlessly with your HR systems, such as payroll, streamlining
+                  your HR processes and improving data accuracy. This enables
+                  you to focus on more strategic initiatives and build a more
+                  efficient and effective HR function.
+                </p>
+              </div>
+              <Link
+                to={"/"}
+                className="w-fit py-4 px-6 rounded-md font-medium bg-secondary-color text-primary-color"
+              >
+                Request a demo
+              </Link>
+            </div>
+            <div>
+              <img src={manSmilingImg} alt="" />
+            </div>
+          </div>
         </div>
       </section>
     </>
