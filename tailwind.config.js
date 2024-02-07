@@ -10,7 +10,8 @@ export default {
       colors: {
         'primary-color': "#3E45EB",
         'primary-text-900': "#141645",
-        'secondary-color': "#E7E8FF"
+        'secondary-color': "#E7E8FF",
+        'primary-text-400': "#686868"
       },
     },
   },

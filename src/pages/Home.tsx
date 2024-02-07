@@ -12,8 +12,8 @@ import stripeLogo from "../assets/Stripe svg.svg";
 import adobeLogo from "../assets/Adobe - png 0.svg";
 import airbnbLogo from "../assets/Airbnb - png 0.svg";
 import manWorkingOutImg from "../assets/Office worker exercising with dumbbells to train muscles while he uses laptop at desk. employee lifting weights and doing physical activity with fitness exercise, working on computer for business..png";
-import ladyWithLaptopImg from '../assets/Lady working on her computer.png'
-import manSmilingImg from '../assets/Man smiling and holding coffee.png'
+import ladyWithLaptopImg from "../assets/Lady working on her computer.png";
+import manSmilingImg from "../assets/Man smiling and holding coffee.png";
 
 const Home = () => {
   return (
@@ -105,8 +105,8 @@ const Home = () => {
           </ul>
         </div>
       </section>
-      <section>
-        <div className="w-3/4 mx-auto">
+      <section className="py-20">
+        <div className="w-[80%] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-24 mb-20 lg:mb-40">
             <div className="flex flex-col justify-between gap-10 lg:gap-0">
               <div className="flex flex-col gap-5">
@@ -130,13 +130,20 @@ const Home = () => {
               </Link>
             </div>
             <div>
-              <img src={manWorkingOutImg} alt="" className="hidden lg:inline-block" />
-              
+              <img
+                src={manWorkingOutImg}
+                alt=""
+                className="hidden lg:inline-block"
+              />
             </div>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-7 mb-20 lg:mb-40">
             <div>
-              <img src={ladyWithLaptopImg} alt="" className="hidden lg:inline-block"/>
+              <img
+                src={ladyWithLaptopImg}
+                alt=""
+                className="hidden lg:inline-block"
+              />
             </div>
             <div className="flex flex-col justify-between gap-10 lg:gap-0 lg:px-7">
               <div className="flex flex-col gap-5">
@@ -153,7 +160,7 @@ const Home = () => {
               </div>
               <Link
                 to={"/"}
-                className="w-fit  px-[1.25em] py-[0.75em] rounded-md font-medium bg-secondary-color text-primary-color"
+                className="w-fit px-[1.25em] py-[0.75em] rounded-md font-medium bg-secondary-color text-primary-color"
               >
                 Request a demo
               </Link>
@@ -181,9 +188,27 @@ const Home = () => {
               </Link>
             </div>
             <div>
-              <img src={manSmilingImg} alt="" className="hidden lg:inline-block"/>
+              <img
+                src={manSmilingImg}
+                alt=""
+                className="hidden lg:inline-block"
+              />
             </div>
           </div>
+        </div>
+      </section>
+      <section className="py-24 bg-[#f6f6fa]">
+        <div className="w-[80%] mx-auto">
+          <header className="flex flex-col lg:flex-row items-center gap-1 lg:w-3/4">
+            <h2 className="text-4xl text-primary-text-900 font-bold">Packed with amazing features just like you</h2>
+            <p className="lg:w-3/4 text-sm text-primary-text-400 font-medium">
+              Our performance management system is designed to meet the needs of
+              modern HR professionals like you. We understand that you need a
+              solution that is intuitive, easy to use, and packed with powerful
+              features to help you streamline your HR processes and improve
+              employee performance.
+            </p>
+          </header>
         </div>
       </section>
     </>
