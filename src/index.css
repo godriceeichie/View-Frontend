@@ -14,10 +14,12 @@ body{
     to { transform: translateX(-50%); }
 }
 
-  .track{
-    width: 180%;
-    /* white-space: nowrap; */
-    /* will-change: transform; */
-    animation: marquee 10s linear infinite;
+@media (width >= 768px){
+    .track{
+        width: 180%;
+        /* white-space: nowrap; */
+        /* will-change: transform; */
+        animation: marquee 10s linear infinite;
+    }
+    
 }
-

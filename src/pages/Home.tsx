@@ -107,10 +107,10 @@ const Home = () => {
       </section>
       <section>
         <div className="w-3/4 mx-auto">
-          <div className="grid grid-cols-2 gap-7 mb-56">
-            <div className="flex flex-col justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-24 mb-20 lg:mb-40">
+            <div className="flex flex-col justify-between gap-10 lg:gap-0">
               <div className="flex flex-col gap-5">
-                <h3 className="text-primary-text-900 font-bold text-4xl">
+                <h3 className="text-primary-text-900 font-bold text-3xl lg:text-4xl">
                   Track personal and organizational goals
                 </h3>
                 <p className="text-[#686868] font-medium text-sm">
@@ -124,22 +124,23 @@ const Home = () => {
               </div>
               <Link
                 to={"/"}
-                className="w-fit py-4 px-6 rounded-md font-medium bg-secondary-color text-primary-color"
+                className="w-fit  px-[1.25em] py-[0.75em] rounded-md font-medium bg-secondary-color text-primary-color"
               >
                 Request a demo
               </Link>
             </div>
             <div>
-              <img src={manWorkingOutImg} alt="" />
+              <img src={manWorkingOutImg} alt="" className="hidden lg:inline-block" />
+              
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-7 mb-56">
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-7 mb-20 lg:mb-40">
             <div>
-              <img src={ladyWithLaptopImg} alt="" />
+              <img src={ladyWithLaptopImg} alt="" className="hidden lg:inline-block"/>
             </div>
-            <div className="flex flex-col justify-between px-7">
+            <div className="flex flex-col justify-between gap-10 lg:gap-0 lg:px-7">
               <div className="flex flex-col gap-5">
-                <h3 className="text-primary-text-900 font-bold text-4xl">
+                <h3 className="text-primary-text-900 font-bold text-3xl">
                   Monitor employee progress towards goals
                 </h3>
                 <p className="text-[#686868] font-medium text-sm">
@@ -152,14 +153,14 @@ const Home = () => {
               </div>
               <Link
                 to={"/"}
-                className="w-fit py-4 px-6 rounded-md font-medium bg-secondary-color text-primary-color"
+                className="w-fit  px-[1.25em] py-[0.75em] rounded-md font-medium bg-secondary-color text-primary-color"
               >
                 Request a demo
               </Link>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-7">
-            <div className="flex flex-col justify-between">
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-24">
+            <div className="flex flex-col justify-between gap-10 lg:gap-0">
               <div className="flex flex-col gap-5">
                 <h3 className="text-primary-text-900 font-bold text-4xl">
                   Integrate with HR systems such as payroll
@@ -174,13 +175,13 @@ const Home = () => {
               </div>
               <Link
                 to={"/"}
-                className="w-fit py-4 px-6 rounded-md font-medium bg-secondary-color text-primary-color"
+                className="w-fit  px-[1.25em] py-[0.75em] rounded-md text-sm lg:text-base font-medium bg-secondary-color text-primary-color"
               >
                 Request a demo
               </Link>
             </div>
             <div>
-              <img src={manSmilingImg} alt="" />
+              <img src={manSmilingImg} alt="" className="hidden lg:inline-block"/>
             </div>
           </div>
         </div>
