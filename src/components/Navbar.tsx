@@ -1,13 +1,25 @@
 import { Link } from "react-router-dom";
 import { Logo } from ".";
 import { FiMenu } from "react-icons/fi";
+import UseScroll from "../hooks/useScroll";
 
 const Navbar = () => {
+  const { scrollPosition } = UseScroll();
   return (
-    <header className="sticky top-0 z-10 bg-primary-color px-6 md:px-10 py-3 flex items-center justify-between">
+    <header
+      className={`sticky top-0 z-10 ${
+        scrollPosition >= 400
+          ? "bg-white border-b border-b-[#b7b7b7] shadow-sm"
+          : "bg-primary-color border-b border-b-[#e7e8ff2b]"
+      } px-6 md:px-10 py-4 flex items-center justify-between`}
+    >
       <div className="flex items-center gap-28">
         <Logo />
-        <ul className="hidden lg:flex gap-6 text-white text-sm ">
+        <ul
+          className={`hidden lg:flex gap-6 ${
+            scrollPosition >= 400 ? "text-[#3E3E3F]" : "text-white"
+          } text-sm font-medium`}
+        >
           <li>
             <Link to={"#"} className="">
               Use cases
@@ -27,13 +39,25 @@ const Navbar = () => {
       <div className="flex items-center gap-5">
         <Link
           to={"/auth/login"}
-          className="bg-[#E7E8FF] text-white bg-opacity-15 px-[24px] py-[8px] rounded-md text-sm"
+          className={`bg-[#E7E8FF] ${
+            scrollPosition >= 400
+              ? "text-primary-color"
+              : "text-white bg-opacity-15"
+          }  px-6 py-3 rounded-md text-sm`}
         >
           Login
         </Link>
-        <Link to={"/"} className="hidden md:block text-white text-sm">Request a demo</Link>
+        <Link
+          to={"/"}
+          className={`${
+            scrollPosition >= 400 &&
+            "bg-primary-color text-white px-[24px] py-[8px] rounded-md"
+          } hidden md:block text-white text-sm font-medium`}
+        >
+          Request a demo
+        </Link>
         {/* <TiThMenuOutline className="text-white text-lg"/> */}
-        <FiMenu className="md:hidden text-white text-lg"/>
+        <FiMenu className={`md:hidden text-lg ${scrollPosition >= 400 ? "text-primary-color": "text-white"}`} />
       </div>
     </header>
   );

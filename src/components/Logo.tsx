@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom'
-import logo from '../assets/Logo.svg'
+import whiteLogo from '../assets/Logo.svg'
+import blueLogo from '../assets/blueLogo.svg'
+import UseScroll from '../hooks/useScroll'
 
 const Logo = () => {
+  const {scrollPosition} = UseScroll()
   return (
     <Link to={'/'} >
-      <img src={logo} className='w-20 md:w-auto' alt="Logo" />
+      {
+        scrollPosition >= 400 ? <img src={blueLogo} className='w-20 md:w-auto' alt="Logo" /> : <img src={whiteLogo} className='w-20 md:w-auto' alt="Logo" />
+      }
     </Link>
   )
 }
