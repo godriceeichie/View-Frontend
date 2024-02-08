@@ -51,7 +51,7 @@ const Navbar = () => {
           to={"/"}
           className={`${
             scrollPosition >= 400 &&
-            "bg-primary-color text-white px-[24px] py-[8px] rounded-md"
+            "bg-primary-color text-white px-6 py-3 rounded-md"
           } hidden md:block text-white text-sm font-medium`}
         >
           Request a demo
