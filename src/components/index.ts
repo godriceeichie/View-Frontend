@@ -1,3 +1,4 @@
+export { default as TestimoniesSlider }from './TestimoniesSlider'
 export { default as FeaturesSlider} from './FeaturesSlider'
 export { default as Logo } from './Logo'
 export { default as Navbar } from './Navbar'

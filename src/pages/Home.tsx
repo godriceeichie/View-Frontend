@@ -14,7 +14,7 @@ import airbnbLogo from "../assets/Airbnb - png 0.svg";
 import manWorkingOutImg from "../assets/Office worker exercising with dumbbells to train muscles while he uses laptop at desk. employee lifting weights and doing physical activity with fitness exercise, working on computer for business..png";
 import ladyWithLaptopImg from "../assets/Lady working on her computer.png";
 import manSmilingImg from "../assets/Man smiling and holding coffee.png";
-import { FeaturesSlider } from "../components";
+import { FeaturesSlider, TestimoniesSlider } from "../components";
 
 const Home = () => {
   return (
@@ -198,11 +198,13 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="py-24 bg-[#f6f6fa]">
+      <section className="py-11 lg:py-24 bg-[#f6f6fa]">
         <div className="">
-        {/* lg:w-3/4 */}
-          <header className=" w-[80%] mx-auto flex flex-col lg:flex-row items-center gap-5 lg:gap-1 mb-9">
-            <h2 className="text-4xl text-primary-text-900 font-bold">Packed with amazing features just like you</h2>
+          {/* lg:w-3/4 */}
+          <header className=" w-[80%] mx-auto flex flex-col lg:flex-row items-center gap-5 lg:gap-1 mb-12">
+            <h2 className="text-4xl text-primary-text-900 font-bold">
+              Packed with amazing features just like you
+            </h2>
             <p className="lg:w-3/4 text-sm text-primary-text-400 font-medium">
               Our performance management system is designed to meet the needs of
               modern HR professionals like you. We understand that you need a
@@ -214,10 +216,15 @@ const Home = () => {
           <FeaturesSlider />
         </div>
       </section>
-      <section>
-        <h2>
-          We've worked with <span>5000+</span> companies, read what our say
-        </h2>
+      <section className="py-12 lg:py-24">
+        <div className="w-[80%] mx-auto">
+          <h2 className="text-3xl text-center font-bold mb-20">
+            We've worked with{" "}
+            <span className="text-primary-color font-bold">5000+</span>{" "}
+            companies, read what our users say
+          </h2>
+          <TestimoniesSlider />
+        </div>
       </section>
     </>
   );
