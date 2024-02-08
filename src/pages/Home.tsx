@@ -198,10 +198,10 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="py-11 lg:py-24 bg-[#f6f6fa]">
+      <section className="py-20 lg:py-24 bg-[#f6f6fa]">
         <div className="">
           {/* lg:w-3/4 */}
-          <header className=" w-[80%] mx-auto flex flex-col lg:flex-row items-center gap-5 lg:gap-1 mb-12">
+          <header className=" w-[80%] mx-auto flex flex-col lg:flex-row items-center gap-5 lg:gap-1 mb-20">
             <h2 className="text-4xl text-primary-text-900 font-bold">
               Packed with amazing features just like you
             </h2>
@@ -216,7 +216,7 @@ const Home = () => {
           <FeaturesSlider />
         </div>
       </section>
-      <section className="py-12 lg:py-24">
+      <section className="py-20 lg:py-24">
         <div className="w-[80%] mx-auto">
           <h2 className="text-3xl text-center font-bold mb-20">
             We've worked with{" "}
