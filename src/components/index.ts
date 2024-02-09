@@ -1,3 +1,4 @@
+export { default as LoginModal} from './Login'
 export { default as CTA} from './CTA'
 export { default as TestimoniesSlider }from './TestimoniesSlider'
 export { default as FeaturesSlider} from './FeaturesSlider'

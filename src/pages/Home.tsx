@@ -15,19 +15,32 @@ import manWorkingOutImg from "../assets/Office worker exercising with dumbbells 
 import ladyWithLaptopImg from "../assets/Lady working on her computer.png";
 import manSmilingImg from "../assets/Man smiling and holding coffee.png";
 import { FeaturesSlider, TestimoniesSlider } from "../components";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const Home = () => {
+  // const [scope, animate] = useAnimate();
+  useEffect(() => {
+    // animate("img", { y: [0, 10]}, {type: "tween", repeat: Infinity, })
+  }, []);
   return (
     <>
       {/* // h-[87vh] md:h-[60vh] lg:h-[80vh] */}
       <section className="bg-primary-color  text-white relative">
         <div className="h-full relative py-24">
           {/* w-24 lg:w-auto  */}
-          <img
+          {/* <img
             src={chart1}
             alt=""
             className="hidden lg:inline-block absolute left-8 top-6"
-          />
+          /> */}
+          <motion.img
+            src={chart1}
+            alt=""
+            className="hidden lg:inline-block absolute left-8 top-6"
+            animate={{y: [0, 10, 0]}}
+            transition={{type: "spring", duration: 1, reverse: Infinity}}
+          ></motion.img>
           <img
             src={profileImg}
             alt=""
@@ -83,25 +96,32 @@ const Home = () => {
           </h2>
           <ul className="flex flex-col md:flex-row items-center gap-8 md:gap-4 track">
             <li>
-              <img src={hmLogo} alt="" className="lg:w-[300px]" />
+              {/* lg:w-[300px]/ */}
+              <img src={hmLogo} alt="" className="" />
             </li>
             <li>
-              <img src={googleLogo} alt="" className="lg:w-[500px]" />
+              {/* lg:w-[500px] */}
+              <img src={googleLogo} alt="" className="" />
             </li>
             <li>
-              <img src={appleLogo} alt="" className="lg:w-[300px]" />
+              {/* lg:w-[300px] */}
+              <img src={appleLogo} alt="" className="" />
             </li>
             <li>
-              <img src={pinterestLogo} alt="" className="lg:w-[600px]" />
+              {/* lg:w-[600px] */}
+              <img src={pinterestLogo} alt="" className="" />
             </li>
             <li>
-              <img src={stripeLogo} alt="" className="lg:w-[600px]" />
+              {/* lg:w-[600px] */}
+              <img src={stripeLogo} alt="" className="" />
             </li>
             <li>
-              <img src={adobeLogo} alt="" className="lg:w-[600px]" />
+              {/* lg:w-[600px] */}
+              <img src={adobeLogo} alt="" className="" />
             </li>
             <li>
-              <img src={airbnbLogo} alt="" className="lg:w-[500px]" />
+              {/* lg:w-[500px] */}
+              <img src={airbnbLogo} alt="" className="" />
             </li>
           </ul>
         </div>
