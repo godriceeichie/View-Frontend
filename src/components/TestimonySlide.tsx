@@ -3,7 +3,7 @@ import { FaCircleUser } from "react-icons/fa6";
 
 const TestimonySlide = () => {
   return (
-    <div className="lg:w-1/2 mx-auto p-8 lg:p-10 rounded-xl border border-[#D5D5D5]">
+    <div className="lg:w-1/2 mx-auto p-10 rounded-xl border border-[#D5D5D5]">
       <header className="flex justify-between items-center">
         <div className="flex items-center gap-3">
           <FaCircleUser className="text-[#71C6A2] text-6xl" />

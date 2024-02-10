@@ -1,5 +1,25 @@
-@import url('https://fonts.cdnfonts.com/css/satoshi');                
+@import url('https://fonts.cdnfonts.com/css/satoshi');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    font-family: 'Satoshi', sans-serif;
+}
+              
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@media (width >= 768px){
+    .track{
+        width: 180%;
+        /* white-space: nowrap; */
+        /* will-change: transform; */
+        animation: marquee 10s linear infinite;
+    }
+    
+}

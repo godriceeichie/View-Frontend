@@ -4,7 +4,7 @@ import bg from "../assets/bro.svg";
 const CTA = () => {
   return (
     <section
-      className={`w-[80%] mx-auto bg-primary-color rounded-xl py-10 px-7 relative my-20`}
+      className={`w-[80%] mx-auto bg-primary-color rounded-xl pl-[4%] py-[7%] relative my-20`}
     >
       <div className="md:w-1/2">
         <h3 className="text-white text-2xl lg:text-4xl mb-16">
