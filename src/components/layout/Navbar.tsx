@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { LoginDialog, Logo } from ".";
+import { LoginDialog, Logo } from "..";
 import { FiMenu } from "react-icons/fi";
-import UseScroll from "../hooks/useScroll";
+import UseScroll from "../../hooks/useScroll";
 
 const Navbar = () => {
   const { scrollPosition } = UseScroll();

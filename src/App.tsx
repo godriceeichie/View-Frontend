@@ -16,7 +16,7 @@ function App() {
           <Route index element={<Home />} />
         </Route>
         <Route path="/auth">
-          <Route path="get-started" element={<SignUp />} />
+          <Route path="signup" element={<SignUp />} />
         </Route>
       </Route>
     )

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import whiteLogo from '../assets/Logo.svg'
-import blueLogo from '../assets/blueLogo.svg'
-import UseScroll from '../hooks/useScroll'
+import whiteLogo from '../../assets/Logo.svg'
+import blueLogo from '../../assets/blueLogo.svg'
+import UseScroll from '../../hooks/useScroll'
 
 const Logo = () => {
   const {scrollPosition} = UseScroll()

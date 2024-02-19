@@ -45,7 +45,7 @@ const Home = () => {
             </div>
             <div className="flex items-center gap-3">
               <Link
-                to={"/auth/get-started"}
+                to={"/auth/signup"}
                 className="bg-white text-primary-color text-sm md:text-base px-[1.25em] py-[0.75em] rounded-lg font-medium"
               >
                 Get Started

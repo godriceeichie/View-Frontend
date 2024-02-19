@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import bg from "../assets/bro.svg";
+import bg from "../../assets/bro.svg";
 
 const CTA = () => {
   return (

@@ -14,7 +14,7 @@ module.exports = withMT({
         sans: ["Satoshi", "sans-serif"]
       },
       boxShadow: {
-        "3xl": "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
+        "active-input": "1px 1px 9px 1px rgba(62,69,235,0.56)",
       },
       colors: {
         'primary-color': "#3E45EB",

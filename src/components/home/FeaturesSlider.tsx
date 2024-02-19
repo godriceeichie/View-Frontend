@@ -1,8 +1,8 @@
 import FeatureSlide from "./FeatureSlide";
-import cupImg from "../assets/cup.svg";
-import documentImg from "../assets/documenttext1.svg";
-import chartImg from "../assets/chart1.svg";
-import verifyImg from "../assets/verify.svg";
+import cupImg from "../../assets/cup.svg";
+import documentImg from "../../assets/documenttext1.svg";
+import chartImg from "../../assets/chart1.svg";
+import verifyImg from "../../assets/verify.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Navigation, Pagination } from "swiper/modules";
 import 'swiper/css'
