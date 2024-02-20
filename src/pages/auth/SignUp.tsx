@@ -1,7 +1,7 @@
 import signupImg from "../../assets/Image holder.svg";
 import { useState } from "react";
 import { Stepper } from "@mantine/core";
-import { CompanyDetails, CreateAccount } from "../../components";
+import { CompanyDetails, CreateAccount, TermsOfUse } from "../../components";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 
@@ -14,10 +14,10 @@ const SignUp = () => {
   return (
     <>
       <div className="relative grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] h-screen lg:overflow-y-hidden">
-        <div className="pt-3 overflow-y-auto">
+        <div className="pt-4 overflow-y-auto">
           <Link
             to={"/"}
-            className="w-[85%] mx-auto flex items-center text-primary-color hover:underline mb-3 lg:mb-0"
+            className="w-[85%] mx-auto flex items-center text-primary-color hover:underline mb-2 lg:mb-0"
           >
             <IoIosArrowBack />
             Back home
@@ -64,7 +64,8 @@ const SignUp = () => {
               <CompanyDetails prevStep={prevStep} nextStep={nextStep}/>
             </Stepper.Step>
             <Stepper.Step label="Terms of use">
-              Step 3 content: Get full access
+              {/* Step 3 content: Get full access */}
+              <TermsOfUse prevStep={prevStep} nextStep={nextStep}/>
             </Stepper.Step>
             <Stepper.Completed>
               Completed, click back button to get to previous step
@@ -73,7 +74,7 @@ const SignUp = () => {
           <div className="w-[80%] mx-auto flex flex-col gap-3 pb-8">
             <span className="block text-[#2f2f2f] text-center">
               Already have an account?{" "}
-              <Link to={"/auth/login"} className="text-[#3E79EB] font-bold">
+              <Link to={"/auth/login"} className="text-[#3E79EB] font-bold hover:underline">
                 Sign in
               </Link>
             </span>

@@ -111,8 +111,8 @@ const LoginDialog = () => {
         </DialogBody>
         <DialogFooter placeholder={""} className="justify-center p-0 mt-2">
           <span className="text-[#2f2f2f] text-center font-medium">
-            I would rather{" "}
-            <Link to={"/auth/signup"} className="text-[#3E79EB]">
+            Don't have an account?{" "}
+            <Link to={"/auth/signup"} className="text-[#3E79EB] hover:underline">
               Sign up
             </Link>
           </span>

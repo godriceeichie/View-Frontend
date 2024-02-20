@@ -11,4 +11,9 @@ export const companyDetailsSchema = z.object({
     companyName: z.string().min(3, {message: "Company name should not be less than three characters"}),
     businessType: z.string(),
     address: z.string(),
+    country: z.string(),
+    state: z.string(),
+    numberOfEmployees: z.number(),
+    regNo: z.string()
 })
+

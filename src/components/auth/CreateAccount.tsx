@@ -2,20 +2,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import {zodResolver } from "@hookform/resolvers/zod"
 import { adminDetailsSchema } from "../../validation/signupVal";
 import { MdError } from "react-icons/md";
+import { AdminSignUpInputs, NavButtonsProps } from "../../types";
 
-type CreateAccountProps = {
-  prevStep: () => void;
-  nextStep: () => void;
-};
 
-type AdminSignUpInputs = {
-  firstName: string,
-  lastName: string,
-  workEmail: string,
-  password: string
-}
 
-const CreateAccount = ({ prevStep, nextStep }: CreateAccountProps) => {
+const CreateAccount = ({ prevStep, nextStep }: NavButtonsProps) => {
   const { handleSubmit, register, formState: {errors, dirtyFields}} = useForm<AdminSignUpInputs>({resolver: zodResolver(adminDetailsSchema)})
   const submitData: SubmitHandler<AdminSignUpInputs> = ( data, e ) => {
     e?.preventDefault()
@@ -51,9 +42,9 @@ const CreateAccount = ({ prevStep, nextStep }: CreateAccountProps) => {
             </label>
             <input
               type="text"
-              className="border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
+              className={`border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
                 placeholder:text-[#9e9e9e] focus:outline-none focus:border-[0.5px] 
-                focus:border-[#0912ff] focus:shadow-active-input"
+                focus:border-[#0912ff] focus:shadow-active-input ${errors.lastName?.message && `focus:border-error-color focus:shadow-error-input`}`}
               placeholder="Enter your last name"
               {...register("lastName")}
             />
@@ -65,9 +56,9 @@ const CreateAccount = ({ prevStep, nextStep }: CreateAccountProps) => {
             </label>
             <input
               type="email"
-              className="border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
+              className={`border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
                 placeholder:text-[#9e9e9e] focus:outline-none focus:border-[0.5px] 
-                focus:border-[#0912ff] focus:shadow-active-input"
+                focus:border-[#0912ff] focus:shadow-active-input ${errors.workEmail?.message && `focus:border-error-color focus:shadow-error-input`}`}
               placeholder="Enter your work email"
               {...register("workEmail")}
             />
@@ -79,9 +70,9 @@ const CreateAccount = ({ prevStep, nextStep }: CreateAccountProps) => {
             </label>
             <input
               type="password"
-              className="border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
+              className={`border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
                 placeholder:text-[#9e9e9e] focus:outline-none focus:border-[0.5px] 
-                focus:border-[#0912ff] focus:shadow-active-input"
+                focus:border-[#0912ff] focus:shadow-active-input ${errors.password?.message && `focus:border-error-color focus:shadow-error-input`}`}
               placeholder="Enter your password"
               {...register("password")}
             />
