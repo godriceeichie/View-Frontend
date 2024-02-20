@@ -72,7 +72,7 @@ const SignUp = () => {
           </Stepper>
           <div className="w-[80%] mx-auto flex flex-col gap-3 pb-8">
             <span className="block text-[#2f2f2f] text-center">
-              I would rather{" "}
+              Already have an account?{" "}
               <Link to={"/auth/login"} className="text-[#3E79EB] font-bold">
                 Sign in
               </Link>

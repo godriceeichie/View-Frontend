@@ -1,4 +1,6 @@
 import { Autocomplete } from "@mantine/core";
+import { Country, State, City, ICountry, IState } from "country-state-city";
+import { useEffect, useState } from "react";
 import { PiCaretDown } from "react-icons/pi";
 
 type CompanyDetailsProps = {
@@ -6,7 +8,20 @@ type CompanyDetailsProps = {
   nextStep: () => void;
 };
 
+
+
 const CompanyDetails = ({ prevStep, nextStep }: CompanyDetailsProps) => {
+  const [country, setCountry] = useState<string>()
+  const [states, setStates] = useState<IState[]>()
+
+  const countries = Country.getAllCountries().map((country) => country.name)
+  const allStates = states?.map((state) => state.name)
+  useEffect(() => {
+    setStates(State.getStatesOfCountry(Country.getAllCountries().filter(item => {
+      return item.name == country
+    })[0]?.isoCode))
+
+  }, [country])
   return (
     <div className="flex flex-col gap-6 lg:mt-6">
       <header>
@@ -56,9 +71,12 @@ const CompanyDetails = ({ prevStep, nextStep }: CompanyDetailsProps) => {
               Country
             </label>
             <Autocomplete
+              value={country}
+              onChange={(country) => setCountry(country)}
               size="md"
               placeholder="Choose your country"
-              data={["React", "Angular", "Vue", "Svelte"]}
+              data={countries}
+              limit={5}
               rightSectionPointerEvents="none"
               rightSection={<PiCaretDown />}
               comboboxProps={{ position: 'bottom', middlewares: { flip: false, shift: false }, shadow: 'md' }}
@@ -71,7 +89,7 @@ const CompanyDetails = ({ prevStep, nextStep }: CompanyDetailsProps) => {
             <Autocomplete
               size="md"
               placeholder="Choose your state"
-              data={["React", "Angular", "Vue", "Svelte"]}
+              data={allStates}
               rightSectionPointerEvents="none"
               rightSection={<PiCaretDown />}
               comboboxProps={{ position: 'bottom', middlewares: { flip: false, shift: false }, shadow: 'md' }}
