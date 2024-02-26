@@ -6,8 +6,9 @@ import useAuthContext from "./useAuthContext"
 const useSignUp = () => {
     const { dispatch } = useAuthContext()
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [error, setError] = useState<string>()
     const signup = (data: AdminSignUpInputs, nextStep: () => void, company: Company) => {
-        // const [error, setError] = useState<string>()
+        
         
 
         setIsLoading(true)
@@ -25,7 +26,7 @@ const useSignUp = () => {
                 console.log(error)
             })
     }
-    return { signup, isLoading}
+    return { signup, isLoading, error}
 }
 
 export default useSignUp

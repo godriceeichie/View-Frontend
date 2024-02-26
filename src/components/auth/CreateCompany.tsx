@@ -1,4 +1,4 @@
-import { Autocomplete, LoadingOverlay } from "@mantine/core";
+import { Alert, Autocomplete, LoadingOverlay } from "@mantine/core";
 import { Country, State, IState } from "country-state-city";
 import { useEffect, useState } from "react";
 import { PiCaretDown } from "react-icons/pi";
@@ -9,7 +9,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { MdError } from "react-icons/md";
 import { api } from "../../api/axios";
 
-const CompanyDetails = ({ prevStep, nextStep,company, onCompanyChange}: CreateCompanyProps) => {
+const CompanyDetails = ({
+  prevStep,
+  nextStep,
+  company,
+  onCompanyChange,
+}: CreateCompanyProps) => {
   const {
     setValue,
     register,
@@ -23,9 +28,8 @@ const CompanyDetails = ({ prevStep, nextStep,company, onCompanyChange}: CreateCo
   const [state, setState] = useState<string>();
   const [country, setCountry] = useState<string>();
   const [states, setStates] = useState<IState[]>();
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-
-  const [count, setCount] = useState<number>(0)
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>();
 
   const countries = Country.getAllCountries().map((country) => country.name);
   const allStates = states?.map((state) => state.name);
@@ -40,40 +44,52 @@ const CompanyDetails = ({ prevStep, nextStep,company, onCompanyChange}: CreateCo
   }, [country]);
 
   const createCompany = (data: CompanyDetailsInputs) => {
+    console.log(data);
     setIsLoading(true);
-    api.post("/company", data)
+    api
+      .post("/company", data)
       .then((response) => {
-        console.log(response.data)
+        console.log(response.data);
         setIsLoading(false);
-        onCompanyChange(response.data)
-        console.log(company)
-        nextStep()
+        onCompanyChange(response.data);
+        console.log(company);
+        nextStep();
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response.data.detail);
+        setError(error.response.data.detail);
         setIsLoading(false); // Make sure to set isLoading to false on error as well
       });
-  }
-
-  const submitData: SubmitHandler<CompanyDetailsInputs> = (data, e) => {
-    e?.preventDefault()
-    createCompany(data)
   };
 
-  useEffect(() => {
-    // if(company !== undefined){
-    //   nextStep()
-    // }
-  }, [count])
-
+  const submitData: SubmitHandler<CompanyDetailsInputs> = (data, e) => {
+    e?.preventDefault();
+    setError("")
+    createCompany(data);
+  };
 
   return (
     <div className="flex flex-col gap-6 lg:mt-6 relative">
-      <LoadingOverlay visible={isLoading} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
+      <LoadingOverlay
+        visible={isLoading}
+        zIndex={1000}
+        overlayProps={{ radius: "sm", blur: 2 }}
+      />
       <header>
         <h1 className="font-bold text-2xl mb-2">Company details</h1>
         <p className="text-sm font-medium text-[#4f4f4f]">Welcome to View</p>
       </header>
+      {error && (
+        <Alert
+          variant="light"
+          color="red"
+          title="Error"
+          icon={<MdError />}
+          styles={{ label: { fontSize: "16px" } }}
+        >
+          {error}
+        </Alert>
+      )}
       <form action="" onSubmit={handleSubmit(submitData)}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">

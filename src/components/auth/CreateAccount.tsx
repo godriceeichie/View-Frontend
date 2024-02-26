@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import {zodResolver } from "@hookform/resolvers/zod"
 import { adminDetailsSchema } from "../../validation/signupVal";
 import { MdError } from "react-icons/md";
-import { AdminSignUpInputs, CreateCompanyProps, NavButtonProps } from "../../types";
+import { AdminSignUpInputs, CreateCompanyProps } from "../../types";
 import useSignUp from "../../hooks/useSignUp";
 import { useEffect } from "react";
 
