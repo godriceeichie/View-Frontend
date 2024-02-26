@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { NavButtonsProps } from "../../types";
+import { NavButtonProps } from "../../types";
 import { Checkbox } from "@mantine/core";
 
-const TermsOfUse = ({ prevStep, nextStep }: NavButtonsProps) => {
+const TermsOfUse = ({ prevStep }: NavButtonProps) => {
   return (
     <div className="flex flex-col gap-6 lg:mt-6">
       <header>

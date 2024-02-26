@@ -1,6 +1,6 @@
 export { default as TermsOfUse} from "./auth/TermsOfUse";
 
-export { default as CompanyDetails } from "./auth/CompanyDetails";
+export { default as CompanyDetails } from "./auth/CreateCompany";
 
 export { default as CreateAccount } from "./auth/CreateAccount";
 

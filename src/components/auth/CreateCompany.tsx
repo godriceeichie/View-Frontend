@@ -1,14 +1,15 @@
-import { Autocomplete } from "@mantine/core";
+import { Autocomplete, LoadingOverlay } from "@mantine/core";
 import { Country, State, IState } from "country-state-city";
 import { useEffect, useState } from "react";
 import { PiCaretDown } from "react-icons/pi";
-import { CompanyDetailsInputs, NavButtonsProps } from "../../types/index";
+import { CompanyDetailsInputs, CreateCompanyProps } from "../../types/index";
 import { companyDetailsSchema } from "../../validation/signupVal";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MdError } from "react-icons/md";
+import { api } from "../../api/axios";
 
-const CompanyDetails = ({ prevStep, nextStep }: NavButtonsProps) => {
+const CompanyDetails = ({ prevStep, nextStep,company, onCompanyChange}: CreateCompanyProps) => {
   const {
     setValue,
     register,
@@ -22,6 +23,9 @@ const CompanyDetails = ({ prevStep, nextStep }: NavButtonsProps) => {
   const [state, setState] = useState<string>();
   const [country, setCountry] = useState<string>();
   const [states, setStates] = useState<IState[]>();
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
+  const [count, setCount] = useState<number>(0)
 
   const countries = Country.getAllCountries().map((country) => country.name);
   const allStates = states?.map((state) => state.name);
@@ -35,13 +39,37 @@ const CompanyDetails = ({ prevStep, nextStep }: NavButtonsProps) => {
     );
   }, [country]);
 
+  const createCompany = (data: CompanyDetailsInputs) => {
+    setIsLoading(true);
+    api.post("/company", data)
+      .then((response) => {
+        console.log(response.data)
+        setIsLoading(false);
+        onCompanyChange(response.data)
+        console.log(company)
+        nextStep()
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false); // Make sure to set isLoading to false on error as well
+      });
+  }
+
   const submitData: SubmitHandler<CompanyDetailsInputs> = (data, e) => {
     e?.preventDefault()
-    console.log(data)
-    nextStep()
+    createCompany(data)
   };
+
+  useEffect(() => {
+    // if(company !== undefined){
+    //   nextStep()
+    // }
+  }, [count])
+
+
   return (
-    <div className="flex flex-col gap-6 lg:mt-6">
+    <div className="flex flex-col gap-6 lg:mt-6 relative">
+      <LoadingOverlay visible={isLoading} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
       <header>
         <h1 className="font-bold text-2xl mb-2">Company details</h1>
         <p className="text-sm font-medium text-[#4f4f4f]">Welcome to View</p>
@@ -192,11 +220,11 @@ const CompanyDetails = ({ prevStep, nextStep }: NavButtonsProps) => {
                     placeholder:text-[#9e9e9e] focus:outline-none focus:border-[0.5px] 
                     focus:border-[#0912ff] focus:shadow-active-input"
               placeholder="Enter your reg. no"
-              {...register("regNo")}
+              {...register("registrationNo")}
             />
-            {errors.regNo?.message && (
+            {errors.registrationNo?.message && (
               <div className="text-[#E30101] text-xs flex items-center gap-1">
-                <MdError /> {errors.regNo?.message}
+                <MdError /> {errors.registrationNo?.message}
               </div>
             )}
           </div>
@@ -209,7 +237,9 @@ const CompanyDetails = ({ prevStep, nextStep }: NavButtonsProps) => {
             Back
           </button>
           <button
+            type="submit"
             className="bg-primary-color text-white py-3 px-10 rounded-lg"
+            disabled={isLoading}
           >
             Next
           </button>

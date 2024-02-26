@@ -14,6 +14,6 @@ export const companyDetailsSchema = z.object({
     country: z.string(),
     state: z.string(),
     numberOfEmployees: z.number(),
-    regNo: z.string()
+    registrationNo: z.string()
 })
 

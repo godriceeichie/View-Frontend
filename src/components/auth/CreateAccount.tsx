@@ -2,18 +2,24 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import {zodResolver } from "@hookform/resolvers/zod"
 import { adminDetailsSchema } from "../../validation/signupVal";
 import { MdError } from "react-icons/md";
-import { AdminSignUpInputs, NavButtonsProps } from "../../types";
+import { AdminSignUpInputs, CreateCompanyProps, NavButtonProps } from "../../types";
+import useSignUp from "../../hooks/useSignUp";
+import { useEffect } from "react";
 
-
-
-const CreateAccount = ({ prevStep, nextStep }: NavButtonsProps) => {
+const CreateAccount = ({ prevStep, nextStep, company }: CreateCompanyProps) => {
   const { handleSubmit, register, formState: {errors, dirtyFields}} = useForm<AdminSignUpInputs>({resolver: zodResolver(adminDetailsSchema)})
+  const { isLoading, signup } = useSignUp()
+
   const submitData: SubmitHandler<AdminSignUpInputs> = ( data, e ) => {
     e?.preventDefault()
     console.log(data)
     console.log(dirtyFields)
-    nextStep()
+    signup(data, nextStep, company)
   }
+
+  useEffect(() => {
+    console.log(company)
+  }, [])
   return (
     <div className="flex flex-col gap-6 lg:mt-6">
       <header>
@@ -83,7 +89,7 @@ const CreateAccount = ({ prevStep, nextStep }: NavButtonsProps) => {
           <button onClick={prevStep} className="bg-[#E7E8FF] text-primary-color py-3 px-10 rounded-lg">
             Back
           </button>
-          <button className="bg-primary-color text-white py-3 px-10 rounded-lg">
+          <button className="bg-primary-color text-white py-3 px-10 rounded-lg" disabled={isLoading}>
             Next
           </button>
         </div>
