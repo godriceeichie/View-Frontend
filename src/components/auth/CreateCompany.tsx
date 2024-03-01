@@ -85,7 +85,8 @@ const CompanyDetails = ({
           color="red"
           title="Error"
           icon={<MdError />}
-          styles={{ label: { fontSize: "16px" } }}
+          withCloseButton
+          styles={{ label: { fontSize: "16px" }, body: {gap: ".25rem"} }}
         >
           {error}
         </Alert>

@@ -5,10 +5,11 @@ import { MdError } from "react-icons/md";
 import { AdminSignUpInputs, CreateCompanyProps } from "../../types";
 import useSignUp from "../../hooks/useSignUp";
 import { useEffect } from "react";
+import { Alert, LoadingOverlay } from "@mantine/core";
 
 const CreateAccount = ({ prevStep, nextStep, company }: CreateCompanyProps) => {
   const { handleSubmit, register, formState: {errors, dirtyFields}} = useForm<AdminSignUpInputs>({resolver: zodResolver(adminDetailsSchema)})
-  const { isLoading, signup } = useSignUp()
+  const { isLoading, signup, error } = useSignUp()
 
   const submitData: SubmitHandler<AdminSignUpInputs> = ( data, e ) => {
     e?.preventDefault()
@@ -21,11 +22,28 @@ const CreateAccount = ({ prevStep, nextStep, company }: CreateCompanyProps) => {
     console.log(company)
   }, [])
   return (
-    <div className="flex flex-col gap-6 lg:mt-6">
+    <div className="flex flex-col gap-6 lg:mt-6 relative">
+      <LoadingOverlay
+        visible={isLoading}
+        zIndex={1000}
+        overlayProps={{ radius: "sm", blur: 2 }}
+      />
       <header>
         <h1 className="font-bold text-2xl mb-1">Create an account</h1>
         <p className="text-base font-medium text-[#4f4f4f]">Welcome to View</p>
       </header>
+      {error && (
+        <Alert
+          variant="light"
+          color="red"
+          title="Error"
+          icon={<MdError />}
+          withCloseButton
+          styles={{ label: { fontSize: "16px" }, body: {gap: ".25rem"} }}
+        >
+          {error}
+        </Alert>
+      )}
       <form action="" onSubmit={handleSubmit(submitData)}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">

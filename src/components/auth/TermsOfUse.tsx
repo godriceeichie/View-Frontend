@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { NavButtonProps } from "../../types";
 import { Checkbox } from "@mantine/core";
+import OTPModal from "./OTPModal";
 
 const TermsOfUse = ({ prevStep }: NavButtonProps) => {
   return (
@@ -35,9 +36,7 @@ const TermsOfUse = ({ prevStep }: NavButtonProps) => {
         >
           Back
         </button>
-        <button className="bg-primary-color text-white py-3 px-10 rounded-lg">
-          Next
-        </button>
+        <OTPModal />
       </div>
     </div>
   );

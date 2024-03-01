@@ -22,7 +22,8 @@ module.exports = withMT({
         'primary-text-900': "#141645",
         'secondary-color': "#E7E8FF",
         'primary-text-400': "#686868",
-        'error-color': "#ff0909"
+        'error-color': "#ff0909",
+        'grey-500': "#838387"
       }
     },
   },

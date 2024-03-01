@@ -1,4 +1,8 @@
-export { default as TermsOfUse} from "./auth/TermsOfUse";
+export { default as AdminDashboardHome} from "./dashboard/admin/AdminDashboardHome";
+
+export { default as DashboardHeader } from "./dashboard/DashboardHeader";
+
+export { default as TermsOfUse } from "./auth/TermsOfUse";
 
 export { default as CompanyDetails } from "./auth/CreateCompany";
 
