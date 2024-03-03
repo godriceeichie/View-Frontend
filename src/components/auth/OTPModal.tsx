@@ -8,29 +8,31 @@ import { api } from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 
 type OTPProps = {
-    otp: string
-}
+  otp: string;
+};
 const OTPModal = () => {
   const [open, setOpen] = useState<boolean>(false);
-    const [otp, setOtp] = useState<string>()
+  const [otp, setOtp] = useState<string>();
 
   const handleOpen = () => setOpen(!open);
   const { user } = useAuthContext();
-  const {handleSubmit, setValue} = useForm<OTPProps>()
-  const navigate = useNavigate()
+  const { handleSubmit, setValue } = useForm<OTPProps>();
+  const navigate = useNavigate();
 
   const submitOTP: SubmitHandler<OTPProps> = (data, e) => {
-    e?.preventDefault()
-    api.post("/auth/verifyEmail", data)
-        .then((response) => {
-            console.log(response.data)
-            if(response.status == 200){
-                navigate("/dashboard/admin")
-            }
-        }).catch((error) => {
-            console.log(error)
-        })
-  }
+    e?.preventDefault();
+    api
+      .post("/auth/verifyEmail", data)
+      .then((response) => {
+        console.log(response.data);
+        if (response.status == 200) {
+          navigate("/dashboard/admin");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div>
       <button
@@ -56,12 +58,24 @@ const OTPModal = () => {
             Please enter the code sent to{" "}
             <span className="font-semibold">{user && user.workEmail}</span>
           </p>
-          <form action="" onSubmit={handleSubmit(submitOTP)} className="flex flex-col items-center gap-3">
-            <PinInput oneTimeCode length={6} value={otp} onChange={(otp) => {
-                setOtp(otp)
-                setValue("otp", otp)
-            }}/>
-            <button type="submit" className="mx-auto bg-primary-color text-white py-2 px-10 rounded-lg mt-6 font-medium">
+          <form
+            action=""
+            onSubmit={handleSubmit(submitOTP)}
+            className="flex flex-col items-center gap-3"
+          >
+            <PinInput
+              oneTimeCode
+              length={6}
+              value={otp}
+              onChange={(otp) => {
+                setOtp(otp);
+                setValue("otp", otp);
+              }}
+            />
+            <button
+              type="submit"
+              className="mx-auto bg-primary-color text-white py-2 px-10 rounded-lg mt-6 font-medium"
+            >
               Verify Email
             </button>
           </form>

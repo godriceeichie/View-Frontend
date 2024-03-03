@@ -20,6 +20,7 @@ const CreateAccount = ({ prevStep, nextStep, company }: CreateCompanyProps) => {
 
   useEffect(() => {
     console.log(company)
+    
   }, [])
   return (
     <div className="flex flex-col gap-6 lg:mt-6 relative">

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LoginDialog, Logo } from "..";
+import { LoginModal, Logo } from "..";
 import { FiMenu } from "react-icons/fi";
 import UseScroll from "../../hooks/useScroll";
 
@@ -37,7 +37,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex items-center gap-5">
-        <LoginDialog />
+        <LoginModal />
         <Link
           to={"/"}
           className={`${

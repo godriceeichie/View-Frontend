@@ -24,7 +24,13 @@ const useSignUp = () => {
                 nextStep()
             }).catch((error) => {
                 console.log(error)
-                setError(error.response.data.detail);
+                if(error.response.data.description){
+                    setError(error.response.data.description);
+                }else{
+                    setError(error.response.data.detail);
+                }
+                
+                setIsLoading(false)
             })
     }
     return { signup, isLoading, error}

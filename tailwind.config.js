@@ -19,6 +19,7 @@ module.exports = withMT({
       },
       colors: {
         'primary-color': "#3E45EB",
+        'light-bg-color': "#EFF0F9",
         'primary-text-900': "#141645",
         'secondary-color': "#E7E8FF",
         'primary-text-400': "#686868",

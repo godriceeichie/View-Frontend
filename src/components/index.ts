@@ -1,4 +1,6 @@
-export { default as AdminDashboardHome} from "./dashboard/admin/AdminDashboardHome";
+export { default as DashboardSidebar } from "./dashboard/DashboardSidebar";
+
+export { default as AdminDashboardHome } from "./dashboard/admin/AdminDashboardHome";
 
 export { default as DashboardHeader } from "./dashboard/DashboardHeader";
 
@@ -8,7 +10,7 @@ export { default as CompanyDetails } from "./auth/CreateCompany";
 
 export { default as CreateAccount } from "./auth/CreateAccount";
 
-export { default as LoginDialog } from "./auth/LoginDialog";
+export { default as LoginModal } from "./auth/LoginModal";
 
 export { default as TestimoniesSlider } from "./home/TestimoniesSlider";
 export { default as TestimoniesSliderNav } from "./home/TestimoniesSliderNav";

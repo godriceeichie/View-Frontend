@@ -9,6 +9,8 @@ import Root from "./layout/Root";
 import { Home, SignUp } from "./pages";
 import AdminDashboardRoot from "./layout/AdminDashboardRoot";
 import { AdminDashboardHome } from "./components";
+import RoleAccess from "./components/auth/RoleAccess";
+import Login from "./pages/auth/Login";
 
 function App() {
   const router = createBrowserRouter(
@@ -19,9 +21,11 @@ function App() {
         </Route>
         <Route path="/auth">
           <Route path="signup" element={<SignUp />} />
+          <Route path="login" element={<Login />}/>
         </Route>
+
         <Route path="/dashboard/admin" element={<AdminDashboardRoot />}>
-          <Route index element={<AdminDashboardHome />}/>
+          <Route index element={<AdminDashboardHome />} />
         </Route>
       </Route>
     )

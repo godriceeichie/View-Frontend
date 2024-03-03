@@ -47,6 +47,10 @@ body{
     border-color: #3E45EB;
 }
 
+.dashboard__main-container{
+  height: calc(100vh - 61px);
+}
+
 @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }

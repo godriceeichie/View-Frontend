@@ -6,20 +6,40 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 import UseScroll from "../../hooks/useScroll";
-import googleIcon from "../../assets/logos_google-icon.svg";
 import { Link } from "react-router-dom";
 import { IoCloseOutline } from "react-icons/io5";
+import { Alert, Loader } from "@mantine/core";
+import useLogin from "../../hooks/useLogin";
+import { MdError } from "react-icons/md";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { LoginPayload } from "../../types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginVal } from "../../validation/loginVal";
 
-const LoginDialog = () => {
+// export let handleOpen: () => (value: React.SetStateAction<boolean>) => void;
+const LoginModal = () => {
   const [open, setOpen] = useState(false);
+  let handleOpen = () => setOpen(!open);
 
-  const handleOpen = () => setOpen(!open);
   const { scrollPosition } = UseScroll();
+  const { isLoading, login, error } = useLogin();
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<LoginPayload>({
+    resolver: zodResolver(loginVal),
+  });
+
+  const submitData: SubmitHandler<LoginPayload> = (data, e) => {
+    localStorage.clear();
+    e?.preventDefault();
+    console.log(data);
+    login(data);
+  };
   return (
     <>
-      {/* <Button onClick={handleOpen} variant="gradient">
-        Open Dialog
-      </Button> */}
       <button
         onClick={handleOpen}
         className={`bg-[#E7E8FF] ${
@@ -49,20 +69,22 @@ const LoginDialog = () => {
           </p>
         </DialogHeader>
         <DialogBody placeholder={""} className="flex flex-col gap-6 pb-0">
-          <button
-            onClick={() => {}}
-            className="text-black font-medium flex items-center 
-            gap-2 py-2 justify-center rounded-lg border-[0.5px] border-[#cbcbcb] text-sm"
-          >
-            <img src={googleIcon} alt="" />
-            Login with google
-          </button>
-          <div className="flex items-center gap-3">
-            <div className="border-t-[0.5px] border-t-[#747474] w-1/2"></div>
-            <span>or</span>
-            <div className="border-t-[0.5px] border-t-[#747474] w-1/2"></div>
-          </div>
-          <form action="">
+          {error && (
+            <Alert
+              variant="light"
+              color="red"
+              title="Error"
+              icon={<MdError />}
+              withCloseButton
+              styles={{
+                label: { fontSize: "16px" },
+                body: { gap: ".25rem" },
+              }}
+            >
+              {error}
+            </Alert>
+          )}
+          <form action="" onSubmit={handleSubmit(submitData)}>
             <div>
               <div className="flex flex-col gap-1 mb-3">
                 <label
@@ -77,7 +99,13 @@ const LoginDialog = () => {
                 placeholder:text-[#9e9e9e] focus:outline-none focus:border-[0.5px] 
                 focus:border-[#0912ff] focus:shadow-active-input"
                   placeholder="Enter your work email"
+                  {...register("workEmail")}
                 />
+                {errors.workEmail?.message && (
+                  <div className="text-[#E30101] text-xs flex items-center gap-1">
+                    <MdError /> {errors.workEmail?.message}
+                  </div>
+                )}
               </div>
               <div className="flex flex-col gap-1">
                 <label
@@ -92,7 +120,13 @@ const LoginDialog = () => {
                 placeholder:text-[#9e9e9e] focus:outline-none focus:border-[0.5px] 
                 focus:border-[#0912ff] focus:shadow-active-input mb-4"
                   placeholder="Enter your password"
+                  {...register("password")}
                 />
+                {errors.password?.message && (
+                  <div className="text-[#E30101] text-xs flex items-center gap-1">
+                    <MdError /> {errors.password?.message}
+                  </div>
+                )}
               </div>
             </div>
             <Link
@@ -103,16 +137,20 @@ const LoginDialog = () => {
             </Link>
             <button
               type="submit"
-              className="block mt-8 bg-primary-color p-3 text-white font-medium rounded-xl w-full"
+              className="flex items-center justify-center gap-2 mt-8 bg-primary-color p-3 text-white font-medium rounded-xl w-full"
             >
               Login
+              {isLoading ? <Loader size={17} color="#fff" /> : ""}
             </button>
           </form>
         </DialogBody>
         <DialogFooter placeholder={""} className="justify-center p-0 mt-2">
-          <span className="text-[#2f2f2f] text-center font-medium">
+          <span className="text-[#2f2f2f] text-center font-medium text-sm">
             Don't have an account?{" "}
-            <Link to={"/auth/signup"} className="text-[#3E79EB] hover:underline">
+            <Link
+              to={"/auth/signup"}
+              className="text-[#3E79EB] hover:underline"
+            >
               Sign up
             </Link>
           </span>
@@ -122,4 +160,4 @@ const LoginDialog = () => {
   );
 };
 
-export default LoginDialog;
+export default LoginModal;

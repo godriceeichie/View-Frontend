@@ -62,6 +62,10 @@ export type User = {
     role: Role
 }
 
+export type LoginPayload = {
+    workEmail: string,
+    password: string
+}
 // export type AuthContextType = {
 //     user: User,
 //     dispatch: 
