@@ -1,16 +1,16 @@
-import React, { createContext, useReducer } from "react";
-import { User, UserState } from "../types";
+import React, { createContext, useMemo, useReducer } from "react";
+import { UserResponse, UserState } from "../types";
 
 const dispatch = () => {};
 
 export const AuthContext = createContext<{
-  dispatch: React.Dispatch<{ type: string; payload: User }>;
-  user: User | null;
+  dispatch: React.Dispatch<{ type: string; payload: UserResponse }>;
+  user: UserResponse | null;
 }>({ dispatch, user: null });
 
 const authReducer = (
   state: UserState,
-  action: { type: string; payload: User }
+  action: { type: string; payload: UserResponse }
 ): UserState => {
   switch (action.type) {
     case "LOGIN":
@@ -24,10 +24,12 @@ const authReducer = (
 
 const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(authReducer, {
-    user: null,
+    user: JSON.parse(localStorage.getItem("user")!) || null,
   });
+
+  const authContextValue = useMemo(() => ({...state, dispatch}), [state, dispatch])
   return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
+    <AuthContext.Provider value={authContextValue}>
       {children}
     </AuthContext.Provider>
   );

@@ -15,8 +15,11 @@ import manWorkingOutImg from "../assets/Office worker exercising with dumbbells 
 import ladyWithLaptopImg from "../assets/Lady working on her computer.png";
 import manSmilingImg from "../assets/Man smiling and holding coffee.png";
 import { FeaturesSlider, TestimoniesSlider } from "../components";
+import useAuthContext from "../hooks/useAuthContext";
 
 const Home = () => {
+  const {user } = useAuthContext()
+  console.log(user)
   return (
     <>
       {/* // h-[87vh] md:h-[60vh] lg:h-[80vh] */}

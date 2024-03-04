@@ -28,11 +28,10 @@ export type CompanyDetailsInputs = {
 }
 
 export type Company = {
-    address: string,
     companyId: number,
     companyName: string,
     businessType: string,
-    
+    address: string,
     country: string,
     state: string,
     numberOfEmployees: number,
@@ -50,7 +49,7 @@ export enum Role{
 }
 
 export type UserState = {
-    user: User | null
+    user: UserResponse | null
 }
 
 export type User = {
@@ -60,6 +59,16 @@ export type User = {
     workEmail: string,
     gender: Gender,
     role: Role
+}
+
+export type UserResponse = {
+    userId: number,
+    firstName: string,
+    lastName: string,
+    workEmail: string,
+    gender: Gender,
+    role: Role
+    company: Company
 }
 
 export type LoginPayload = {

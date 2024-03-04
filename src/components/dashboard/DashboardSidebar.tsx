@@ -4,8 +4,11 @@ import { BsPeople } from "react-icons/bs";
 import { PiUsersThree } from "react-icons/pi";
 import { MdOutlineRateReview } from "react-icons/md";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
+import useAuthContext from "../../hooks/useAuthContext";
 
 const DashboardSidebar = () => {
+  const { user } = useAuthContext()
+  console.log(user)
   return (
     <aside className="hidden lg:block sticky right-0 bottom-0 h-full w-1/4 border-r border-r-[#E9E9E9] py-3">
       <ul className="flex flex-col gap-2 px-4">
@@ -55,7 +58,7 @@ const DashboardSidebar = () => {
         <div className="flex items-center gap-2">
           <span className="bg-[#5157ED] rounded-full text-white p-1.5">CC</span>
           <div>
-            <p className="text-[#727272] text-sm">Affics</p>
+            <p className="text-[#727272] text-sm">{user?.company.companyName}</p>
             <h3 className="text-[#717171] font-medium">Admin</h3>
           </div>
         </div>

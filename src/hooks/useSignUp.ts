@@ -12,7 +12,7 @@ const useSignUp = () => {
         
 
         setIsLoading(true)
-        api.post(`/auth/company/${company?.companyId}/admin/signup`, {
+        api.post(`/auth/company/${company?.companyId}/admin/signup/`, {
             ...data, role: "Admin"
         })
             .then((response) => {

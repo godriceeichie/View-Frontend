@@ -3,17 +3,15 @@ import logo from "../../assets/blueLogo.svg";
 import { Indicator, Input } from "@mantine/core";
 import { FiSearch } from "react-icons/fi";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { IoLogOutOutline } from "react-icons/io5";
-import { CgMenuGridO } from "react-icons/cg";
 import useAuthContext from "../../hooks/useAuthContext";
 import { useEffect } from "react";
 import { api } from "../../api/axios";
 import MobileDashboardSidebar from "./MobileDashboardSidebar";
+import LogoutModal from "./LogoutModal";
 
 const DashboardHeader = () => {
   const { user } = useAuthContext()
   const accessToken = localStorage.getItem("accessToken")
-  console.log(accessToken)
   useEffect(() => {
     api.get("/user/me")
       .then((response) => {
@@ -35,12 +33,12 @@ const DashboardHeader = () => {
         className="hidden lg:block"
       />
       <div className="flex items-center gap-3">
-        <h3>{user && user.firstName}</h3>
+        {/* <h3>{user && user.firstName}</h3> */}
         <MobileDashboardSidebar />
         <Indicator position="top-end" offset={5} size={8}>
           <IoNotificationsOutline fontSize={23} className="text-grey-500" />
         </Indicator>
-        <IoLogOutOutline fontSize={23} className="text-grey-500" />
+        <LogoutModal />
       </div>
     </header>
   );
