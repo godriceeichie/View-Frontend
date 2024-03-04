@@ -7,7 +7,7 @@ const AdminDashboardRoot = () => {
       <DashboardHeader />
       <div className="dashboard__main-container flex">
         <DashboardSidebar />
-        <main>
+        <main className="w-full bg-[#F7F7F9] overflow-y-auto">
           <Outlet />
         </main>
       </div>

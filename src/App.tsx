@@ -9,7 +9,6 @@ import Root from "./layout/Root";
 import { Home, SignUp } from "./pages";
 import AdminDashboardRoot from "./layout/AdminDashboardRoot";
 import { AdminDashboardHome } from "./components";
-import RoleAccess from "./components/auth/RoleAccess";
 import Login from "./pages/auth/Login";
 
 function App() {

@@ -7,7 +7,7 @@ import { PiDotsThreeVerticalBold } from "react-icons/pi";
 
 const DashboardSidebar = () => {
   return (
-    <aside className="sticky right-0 bottom-0 h-full w-1/5 border-r border-r-[#E9E9E9] py-3">
+    <aside className="hidden lg:block sticky right-0 bottom-0 h-full w-1/4 border-r border-r-[#E9E9E9] py-3">
       <ul className="flex flex-col gap-2 px-4">
         <li className={"group px-6 py-3 rounded-lg"}>
           <NavLink

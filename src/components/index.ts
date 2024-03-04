@@ -1,6 +1,6 @@
 export { default as DashboardSidebar } from "./dashboard/DashboardSidebar";
 
-export { default as AdminDashboardHome } from "./dashboard/admin/AdminDashboardHome";
+export { default as AdminDashboardHome } from "../pages/dashboard/admin/AdminDashboardHome";
 
 export { default as DashboardHeader } from "./dashboard/DashboardHeader";
 

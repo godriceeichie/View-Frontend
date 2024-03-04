@@ -8,6 +8,7 @@ import { CgMenuGridO } from "react-icons/cg";
 import useAuthContext from "../../hooks/useAuthContext";
 import { useEffect } from "react";
 import { api } from "../../api/axios";
+import MobileDashboardSidebar from "./MobileDashboardSidebar";
 
 const DashboardHeader = () => {
   const { user } = useAuthContext()
@@ -35,7 +36,7 @@ const DashboardHeader = () => {
       />
       <div className="flex items-center gap-3">
         <h3>{user && user.firstName}</h3>
-        <CgMenuGridO fontSize={23} className="lg:hidden text-grey-500" />
+        <MobileDashboardSidebar />
         <Indicator position="top-end" offset={5} size={8}>
           <IoNotificationsOutline fontSize={23} className="text-grey-500" />
         </Indicator>
