@@ -3,15 +3,12 @@ import logo from "../../assets/blueLogo.svg";
 import { Indicator, Input } from "@mantine/core";
 import { FiSearch } from "react-icons/fi";
 import { IoNotificationsOutline } from "react-icons/io5";
-import useAuthContext from "../../hooks/useAuthContext";
 import { useEffect } from "react";
 import { api } from "../../api/axios";
 import MobileDashboardSidebar from "./MobileDashboardSidebar";
 import LogoutModal from "./LogoutModal";
 
 const DashboardHeader = () => {
-  const { user } = useAuthContext()
-  const accessToken = localStorage.getItem("accessToken")
   useEffect(() => {
     api.get("/user/me")
       .then((response) => {
