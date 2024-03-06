@@ -2,7 +2,10 @@ import { Alert, Autocomplete, LoadingOverlay } from "@mantine/core";
 import { Country, State, IState } from "country-state-city";
 import { useEffect, useState } from "react";
 import { PiCaretDown } from "react-icons/pi";
-import { CompanyDetailsInputs, CreateCompanyProps } from "../../types/index";
+import {
+  CompanyDetailsInputs,
+  CreateCompanyProps,
+} from "../../types/index";
 import { companyDetailsSchema } from "../../validation/signupVal";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,6 +33,7 @@ const CompanyDetails = ({
   const [states, setStates] = useState<IState[]>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>();
+  const [businessType, setBusinessType] = useState<string>();
 
   const countries = Country.getAllCountries().map((country) => country.name);
   const allStates = states?.map((state) => state.name);
@@ -64,7 +68,7 @@ const CompanyDetails = ({
 
   const submitData: SubmitHandler<CompanyDetailsInputs> = (data, e) => {
     e?.preventDefault();
-    setError("")
+    setError("");
     createCompany(data);
   };
 
@@ -86,7 +90,7 @@ const CompanyDetails = ({
           title="Error"
           icon={<MdError />}
           withCloseButton
-          styles={{ label: { fontSize: "16px" }, body: {gap: ".25rem"} }}
+          styles={{ label: { fontSize: "16px" }, body: { gap: ".25rem" } }}
         >
           {error}
         </Alert>
@@ -99,9 +103,12 @@ const CompanyDetails = ({
             </label>
             <input
               type="text"
-              className="border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
+              className={`border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
                     placeholder:text-[#9e9e9e] focus:outline-none focus:border-[0.5px] 
-                    focus:border-[#0912ff] focus:shadow-active-input"
+                    focus:border-[#0912ff] focus:shadow-active-input ${
+                      errors.companyName?.message &&
+                      `focus:border-error-color focus:shadow-error-input`
+                    }`}
               placeholder="Enter your company name"
               {...register("companyName")}
             />
@@ -115,13 +122,36 @@ const CompanyDetails = ({
             <label htmlFor="" className="text-sm text-[#3e3e3e]">
               Business Type
             </label>
-            <input
+            {/* <input
               type="text"
-              className="border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
+              className={`border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
                     placeholder:text-[#9e9e9e] focus:outline-none focus:border-[0.5px] 
-                    focus:border-[#0912ff] focus:shadow-active-input"
+                    focus:border-[#0912ff] focus:shadow-active-input ${errors.businessType?.message && `focus:border-error-color focus:shadow-error-input`}`}
               placeholder="Enter your business type"
               {...register("businessType")}
+            /> */}
+            <Autocomplete
+              value={businessType}
+              onChange={(businessType) => {
+                setBusinessType(businessType)
+                setValue("businessType", businessType);
+              }}
+              size="md"
+              placeholder="Choose your business type"
+              data={[
+                "Consultancy",
+                "Technology",
+                "Marketing",
+                "Finance",
+                "Entertainment",
+              ]}
+              rightSectionPointerEvents="none"
+              rightSection={<PiCaretDown />}
+              comboboxProps={{
+                position: "bottom",
+                middlewares: { flip: false, shift: false },
+                shadow: "md",
+              }}
             />
             {errors.businessType?.message && (
               <div className="text-[#E30101] text-xs flex items-center gap-1">
@@ -135,9 +165,12 @@ const CompanyDetails = ({
             </label>
             <input
               type="text"
-              className="border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
+              className={`border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
                     placeholder:text-[#9e9e9e] focus:outline-none focus:border-[0.5px] 
-                    focus:border-[#0912ff] focus:shadow-active-input"
+                    focus:border-[#0912ff] focus:shadow-active-input ${
+                      errors.address?.message &&
+                      `focus:border-error-color focus:shadow-error-input`
+                    }`}
               placeholder="Enter your address"
               {...register("address")}
             />
@@ -233,9 +266,12 @@ const CompanyDetails = ({
             </label>
             <input
               type="number"
-              className="border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
+              className={`border-[0.5px] border-[#cbcbcb] rounded-lg py-2 px-3 
                     placeholder:text-[#9e9e9e] focus:outline-none focus:border-[0.5px] 
-                    focus:border-[#0912ff] focus:shadow-active-input"
+                    focus:border-[#0912ff] focus:shadow-active-input ${
+                      errors.registrationNo?.message &&
+                      `focus:border-error-color focus:shadow-error-input`
+                    }`}
               placeholder="Enter your reg. no"
               {...register("registrationNo")}
             />

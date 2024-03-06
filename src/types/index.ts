@@ -48,6 +48,11 @@ export enum Role{
     Employee
 }
 
+export enum BusinessType{
+    Consultancy, Technology, Marketing, Finance, Entertainment
+
+}
+
 export type UserState = {
     user: UserResponse | null
 }
